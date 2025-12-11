@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SmartCity Indramayu</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9fafb;
+      color: #111827;
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    header strong {
+      color: #2563eb;
+      font-size: 1.4rem;
+    }
+
+    nav a {
+      margin: 0 1rem;
+      text-decoration: none;
+      color: #111827;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      color: #2563eb;
+    }
+
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      padding: 3rem 2rem;
+      background-color: #eef2ff;
+    }
+
+    .hero-text {
+      flex: 1;
+      min-width: 300px;
+      max-width: 600px;
+    }
+
+    .hero-text h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: #1d4ed8;
+    }
+
+    .hero-text p {
+      font-size: 1.05rem;
+      color: #374151;
+    }
+
+    .hero-img img {
+      max-width: 420px;
+      width: 100%;
+      height: auto;
+    }
+
+    .features {
+      text-align: center;
+      padding: 4rem 2rem;
+      background-color: white;
+    }
+
+    .features h2 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      color: #2563eb;
+    }
+
+    .grid-icons {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+      justify-items: center;
+    }
+
+    .icon-box {
+      text-align: center;
+      background-color: #f9fafb;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease;
+    }
+
+    .icon-box:hover {
+      transform: translateY(-6px);
+      background-color: #eef2ff;
+    }
+
+    .icon-box img {
+      width: 64px;
+      height: 64px;
+      margin-bottom: 0.75rem;
+    }
+
+    .icon-box h3 {
+      color: #2563eb;
+      margin-bottom: 0.5rem;
+    }
+
+    .icon-box p {
+      color: #374151;
+      font-size: 0.95rem;
+    }
+
+    .about {
+      background-color: #f3f4f6;
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .about h2 {
+      color: #2563eb;
+      margin-bottom: 1rem;
+    }
+
+    .about p {
+      max-width: 800px;
+      margin: 0 auto;
+      color: #374151;
+      font-size: 1rem;
+    }
+
+    .resources {
+      padding: 3rem 2rem;
+      background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+    }
+
+    .resources h2 {
+      color: #2563eb;
+      text-align: center;
+      margin-bottom: 1.5rem;
+      font-size: 1.8rem;
+    }
+
+    .resources-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+      align-items: start;
+    }
+
+    .card {
+      background-color: white;
+      border-radius: 12px;
+      padding: 1.25rem;
+      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .card h3 {
+      margin: 0;
+      color: #0f172a;
+      font-size: 1.1rem;
+    }
+
+    .card p {
+      margin: 0;
+      color: #475569;
+      font-size: 0.95rem;
+    }
+
+    .btn-row {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-top: 0.5rem;
+    }
+
+    .btn {
+      background-color: #2563eb;
+      color: white;
+      padding: 0.6rem 0.9rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn.secondary {
+      background-color: transparent;
+      color: #2563eb;
+      border: 1px solid #c7d2fe;
+    }
+
+    .pdf-preview {
+      width: 100%;
+      height: 360px;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid #e6eefc;
+      background: #fff;
+    }
+
+    .video-wrapper {
+      width: 100%;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #000;
+      display: block;
+    }
+
+    /* Team section styles (baru) */
+    #team {
+      padding: 3rem 2rem;
+      background: #ffffff;
+    }
+
+    #team h2 {
+      color: #2563eb;
+      text-align: center;
+      margin-bottom: 1.25rem;
+      font-size: 1.8rem;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+      align-items: stretch;
+    }
+
+    .member {
+      background: linear-gradient(180deg,#fbfdff 0%, #ffffff 100%);
+      border-radius: 12px;
+      padding: 1rem;
+      text-align: center;
+      box-shadow: 0 6px 18px rgba(2,6,23,0.04);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      align-items: center;
+    }
+
+    .member:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 30px rgba(2,6,23,0.08);
+    }
+
+    .member-photo {
+      width: 120px;
+      height: 120px;
+      border-radius: 999px;
+      overflow: hidden;
+      border: 4px solid #eef2ff;
+      display: inline-block;
+    }
+
+    .member-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .member h3 {
+      margin: 0.4rem 0 0 0;
+      color: #0f172a;
+      font-size: 1.05rem;
+    }
+
+    .member .role {
+      font-size: 0.9rem;
+      color: #475569;
+    }
+
+    .member .bio {
+      font-size: 0.9rem;
+      color: #6b7280;
+      max-width: 260px;
+    }
+
+    .member .socials {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .social-btn {
+      padding: 0.35rem 0.6rem;
+      border-radius: 8px;
+      background: #eef2ff;
+      color: #1d4ed8;
+      text-decoration: none;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      font-size: 0.85rem;
+    }
+
+    /* References section styles */
+    #references {
+      padding: 3rem 2rem;
+      background-color: #ffffff;
+    }
+
+    #references h2 {
+      color: #2563eb;
+      text-align: center;
+      margin-bottom: 1rem;
+      font-size: 1.8rem;
+    }
+
+    .refs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+      align-items: start;
+    }
+
+    .ref-card {
+      background: linear-gradient(180deg,#fbfdff 0%, #ffffff 100%);
+      border-radius: 10px;
+      padding: 1rem;
+      box-shadow: 0 4px 14px rgba(2,6,23,0.06);
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .ref-meta {
+      font-size: 0.9rem;
+      color: #475569;
+    }
+
+    .ref-title {
+      color: #0f172a;
+      font-weight: 700;
+      margin: 0;
+      font-size: 1rem;
+    }
+
+    .ref-actions {
+      margin-top: 0.5rem;
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    .ref-actions a {
+      text-decoration: none;
+      padding: 0.45rem 0.7rem;
+      border-radius: 8px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      background: #2563eb;
+      color: white;
+    }
+
+    .ref-actions button.secondary {
+      background: transparent;
+      color: #2563eb;
+      border: 1px solid #c7d2fe;
+    }
+
+    .ref-note {
+      font-size: 0.85rem;
+      color: #6b7280;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+      .hero-text {
+        max-width: 100%;
+      }
+      .pdf-preview {
+        height: 280px;
+      }
+    }
+
+    footer {
+      background-color: #111827;
+      color: #d1d5db;
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      margin: 0 0.5rem;
+      color: #93c5fd;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div><strong>SmartCity Indramayu</strong></div>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#pillars">Pillars</a>
+    <a href="#resources">Resources</a>
+    <a href="#references">References</a>
+    <a href="#team">Team</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section id="home" class="hero">
+  <div class="hero-text">
+    <h1>Smart City Transformation in Indramayu</h1>
+    <p>
+      Indramayu embraces digital transformation to build a smarter, greener,
+      and more connected future. Through innovation, technology, and public participation,
+      SmartCity Indramayu improves mobility, governance, economy, environment, and quality of life.
+    </p>
+  </div>
+  <div class="hero-img">
+    <img src="img/smart-city.png" alt="Smart City Illustration">
+  </div>
+</section>
+
+<section id="pillars" class="features">
+  <h2>Six Pillars of SmartCity Indramayu</h2>
+  <div class="grid-icons">
+
+    <a class="icon-box" href="smartgovernance.html">
+      <img src="https://cdn-icons-png.flaticon.com/512/190/190411.png" alt="Smart Governance Icon">
+      <h3>Smart Governance</h3>
+      <p>Enhancing transparency, public access, and government efficiency using digital platforms.</p>
+    </a>
+
+    <a class="icon-box" href="smartpeople.html">
+      <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Smart People Icon">
+      <h3>Smart People</h3>
+      <p>Improving digital literacy, creativity, and participation to create an inclusive society.</p>
+    </a>
+
+    <a class="icon-box" href="smartmobility.html">
+      <img src="https://cdn-icons-png.flaticon.com/512/159/159604.png" alt="Smart Mobility Icon">
+      <h3>Smart Mobility</h3>
+      <p>Developing efficient, safe, and environmentally friendly transportation systems.</p>
+    </a>
+
+    <a class="icon-box" href="smartenvironment.html">
+      <img src="https://cdn-icons-png.flaticon.com/512/649/649118.png" alt="Smart Environment Icon">
+      <h3>Smart Environment</h3>
+      <p>Implementing sustainability, renewable energy systems, and eco-friendly solutions.</p>
+    </a>
+
+    <a class="icon-box" href="smarteconomy.html">
+      <img src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" alt="Smart Economy Icon">
+      <h3>Smart Economy</h3>
+      <p>Increasing productivity, innovation, and competitiveness driven by technology.</p>
+    </a>
+
+    <a class="icon-box" href="smartliving.html">
+      <img src="https://cdn-icons-png.flaticon.com/512/709/709496.png" alt="Smart Living Icon">
+      <h3>Smart Living</h3>
+      <p>Improving public service quality such as health, safety, and education.</p>
+    </a>
+
+  </div>
+</section>
+
+<section id="resources" class="resources" aria-labelledby="resources-heading">
+  <h2 id="resources-heading">Resources: Argumentative Writing & Speech</h2>
+
+  <div class="resources-grid">
+
+    <div class="card" role="region" aria-labelledby="pdf-title">
+      <h3 id="pdf-title">Argumentative Writing</h3>
+      <p>
+        Download each student's assignment below.
+      </p>
+
+      <div class="btn-row">
+        <a class="btn" href="files/2307006_Bahtiar Rifai_Argumentative Essay.pdf" download>📄 Bahtiar Rifai</a>
+        <a class="btn" href="files/2307008_Darmawan Almadani_Argumentative Essay.pdf" download>📄 Darmawan Almadani</a>
+        <a class="btn" href="files/2307012_Fany Revalina Putri_ Argumentative Essay Assignment Instructions.pdf" download>📄 Fany Revalina Putri</a>
+        <a class="btn" href="files/2307004_Alfath_Adia_Yahya_Argumentative_Text_Essay.pdf" download>📄 Alfath Adia Yahya Kuswandi</a>
+        <a class="btn" href="files/Oceano Nazillah_2307022_Argumentative text_Autonomous_Public_Transportation_Essay.pdf" download>📄 Oceano Nazilah</a>
+      </div>
+
+    </div>
+
+    <div class="card" role="region" aria-labelledby="video-title">
+      <h3 id="video-title">Argumentative Speech</h3>
+      <p>
+        Enjoy a seamless learning experience by watching the argumentative speech video below. You may also download it to access offline.
+      </p>
+
+      <div class="video-wrapper" style="aspect-ratio:16/9;">
+        <video id="speechVideo" controls preload="metadata" poster="img/video-poster.png" style="width:100%; height:100%;">
+          <source src="videos/speech.mp4" type="video/mp4">
+          Your browser does not support HTML5 video. Please <a href="videos/argumentative_speech.mp4" download>download the video</a>.
+        </video>
+      </div>
+
+      <div class="btn-row">
+        <a class="btn" href="videos/argumentative_speech.mp4" download="Argumentative_Speech.mp4">
+          ⬇️ Download Video
+        </a>
+        <button class="btn secondary" id="toggleFull">⛶ Fullscreen</button>
+      </div>
+
+      <p style="color:#64748b; font-size:0.9rem;">Tip: Switch to fullscreen mode for better visibility.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- TEAM / MEMBERS -->
+<section id="team" aria-labelledby="team-heading">
+  <h2 id="team-heading">SmartCity Indramayu Team</h2>
+  <p style="text-align:center; color:#6b7280; max-width:900px; margin:0 auto 1.25rem;">
+    Core project team
+  </p>
+
+  <div class="team-grid" role="list">
+    <!-- Member 1 -->
+    <article class="member" role="listitem" aria-label="Member 1 - Project Leader">
+      <div class="member-photo" aria-hidden="false">
+        <img src="img/bah.jpg" alt="Photo of Bahtiar Rifai">
+      </div>
+      <h3>Bahtiar Rifai</h3>
+      <div class="role">Project Leader / Coordinator</div>
+      <p class="bio">Responsible for overall project coordination and communication with stakeholders.</p>
+      <div class="socials">
+        <a class="social-btn" href="mailto:bachtiarrifai55@gmail.com">Email</a>
+        <a class="social-btn" href="#" aria-label="Bahtiar's LinkedIn">LinkedIn</a>
+      </div>
+    </article>
+
+    <!-- Member 2 -->
+    <article class="member" role="listitem" aria-label="Member 2 - Data Analyst">
+      <div class="member-photo">
+        <img src="img/dar.jpg" alt="Photo of Darmawan Almadani">
+      </div>
+      <h3>Darmawan Almadani</h3>
+      <div class="role">Data Analyst</div>
+      <p class="bio">Manages city data, dashboard creation, and analysis to support decision-making.</p>
+      <div class="socials">
+        <a class="social-btn" href="mailto:darmawanalmadani27@gmail.com">Email</a>
+        <a class="social-btn" href="#" aria-label="Darmawan's LinkedIn">LinkedIn</a>
+      </div>
+    </article>
+
+    <!-- Member 3 -->
+    <article class="member" role="listitem" aria-label="Member 3 - Frontend Developer">
+      <div class="member-photo">
+        <img src="img/fan.jpg" alt="Photo of Fany Revalina Putri">
+      </div>
+      <h3>Fany Revalina Putri</h3>
+      <div class="role">Frontend Developer</div>
+      <p class="bio">Develops user interfaces, handles front-end design, and ensures a user-friendly experience.</p>
+      <div class="socials">
+        <a class="social-btn" href="mailto:fanyrputri@gmail.com">Email</a>
+        <a class="social-btn" href="#" aria-label="Fany's LinkedIn">LinkedIn</a>
+      </div>
+    </article>
+
+    <!-- Member 4 -->
+    <article class="member" role="listitem" aria-label="Member 4 - Infrastructure & IoT">
+      <div class="member-photo">
+        <img src="img/Alfath.jpg" alt="Photo of Alfath Adia Yahya Kuswandi">
+      </div>
+      <h3>Alfath Adia Yahya</h3>
+      <div class="role">Infrastructure & IoT</div>
+      <p class="bio">Handles sensor integration, IoT networks, and field infrastructure architecture.</p>
+      <div class="socials">
+        <a class="social-btn" href="mailto:alfathayk@gmail.com">Email</a>
+        <a class="social-btn" href="#" aria-label="Alfath's LinkedIn">LinkedIn</a>
+      </div>
+    </article>
+
+    <!-- Member 5 -->
+    <article class="member" role="listitem" aria-label="Member 5 - Public Relations & Community">
+      <div class="member-photo">
+        <img src="img/oce.jpg" alt="Photo of Oceano Nazillah">
+      </div>
+      <h3>Oceano Nazillah</h3>
+      <div class="role">Public Relations & Community Engagement</div>
+      <p class="bio">Focuses on public communication, community engagement activities, and social media strategy.</p>
+      <div class="socials">
+        <a class="social-btn" href="mailto:oceanonazilah@gmail.com">Email</a>
+        <a class="social-btn" href="#" aria-label="Oceano's LinkedIn">LinkedIn</a>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- NEW REFERENCES SECTION -->
+<section id="references" aria-labelledby="references-heading">
+  <h2 id="references-heading">References & Further Reading</h2>
+
+  <p style="text-align:center; color:#6b7280; max-width:900px; margin:0 auto 1.25rem;">Relevant articles and reports used as background for this topic. Click a reference to open the source (opens in a new tab). You can replace these sample entries with your actual article metadata and links.</p>
+
+  <div class="refs-grid">
+
+    <article class="ref-card" role="article" aria-labelledby="ref1-title">
+      <h4 id="ref1-title" class="ref-title">Smart Cities, Governance and Public Participation</h4>
+      <div class="ref-meta">S. Author, Journal of Urban Tech — 2022</div>
+      <p class="ref-note">Overview of governance models for smart city deployments and methods to increase citizen participation.</p>
+      <div class="ref-actions">
+        <a href="https://share.google/MtQurU1RKtPiyOin6" target="_blank" rel="noopener">Open</a>
+        <button class="secondary" onclick="copyRef(1)">Copy citation</button>
+      </div>
+    </article>
+
+    <article class="ref-card" role="article" aria-labelledby="ref2-title">
+      <h4 id="ref2-title" class="ref-title">Sustainable Urban Mobility in Medium Cities</h4>
+      <div class="ref-meta">A. Researcher, Transport & Society — 2021</div>
+      <p class="ref-note">Case studies on non-motorised transport and low-carbon mobility solutions suitable for regency-level governments.</p>
+      <div class="ref-actions">
+        <a href="https://share.google/ujzrli6A0AReHtGs9" target="_blank" rel="noopener">Open</a>
+        <button class="secondary" onclick="copyRef(2)">Copy citation</button>
+      </div>
+    </article>
+
+    <article class="ref-card" role="article" aria-labelledby="ref3-title">
+      <h4 id="ref3-title" class="ref-title">Waste Management & Digital Tools: A Review</h4>
+      <div class="ref-meta">R. Enviro, Waste Management Journal — 2020</div>
+      <p class="ref-note">Survey of sensor-based collection systems, routing optimisation, and public engagement platforms.</p>
+      <div class="ref-actions">
+        <a href="https://share.google/LZONpP3GutOF3weqH" target="_blank" rel="noopener">Open</a>
+        <button class="secondary" onclick="copyRef(3)">Copy citation</button>
+      </div>
+    </article>
+
+    <article class="ref-card" role="article" aria-labelledby="ref4-title">
+      <h4 id="ref4-title" class="ref-title">Digital Literacy & Community Resilience</h4>
+      <div class="ref-meta">L. Community, Inclusive Cities — 2019</div>
+      <p class="ref-note">Strategies and programs to raise digital skills among rural/regency populations to support smart initiatives.</p>
+      <div class="ref-actions">
+        <a href="https://share.google/298ooBhemwoe0PjFw" target="_blank" rel="noopener">Open</a>
+        <button class="secondary" onclick="copyRef(4)">Copy citation</button>
+      </div>
+    </article>
+
+  </div>
+
+  <p style="text-align:center; color:#6b7280; font-size:0.9rem; margin-top:1rem;">Tip: replace the sample links (https://example.com/...) with the actual URLs for your articles.</p>
+</section>
+
+<section id="about" class="about">
+  <h2>About SmartCity Indramayu</h2>
+  <p>
+    SmartCity Indramayu is an innovation-driven regional development program initiated by the Government of Indramayu Regency.
+    It aligns with the national Smart City blueprint and focuses on modern public services, data-driven planning, ICT infrastructure,
+    environmental sustainability, and community involvement. The six pillars help transform Indramayu into a modern, future-ready regional model.
+  </p>
+</section>
+
+<footer id="contact">
+  <p>
+    <a href="#about">About</a> |
+    <a href="#pillars">Pillars</a> |
+    <a href="mailto:info@smartcityindramayu.id">Email Us</a>
+  </p>
+  <p>© 2025 SmartCity Indramayu. All rights reserved.</p>
+</footer>
+
+<script>
+  (function () {
+    const btn = document.getElementById('toggleFull');
+    const video = document.getElementById('speechVideo');
+
+    if (btn) {
+      btn.addEventListener('click', () => {
+        if (!video) return;
+
+        if (document.fullscreenElement) {
+          document.exitFullscreen().catch(() => {});
+        } else {
+          if (video.requestFullscreen) video.requestFullscreen();
+          else if (video.webkitRequestFullscreen) video.webkitRequestFullscreen();
+          else if (video.msRequestFullscreen) video.msRequestFullscreen();
+        }
+      });
+
+      btn.addEventListener('keyup', (e) => {
+        if (e.key === 'Enter') btn.click();
+      });
+    }
+
+    if (video) {
+      video.addEventListener('keydown', (e) => {
+        if (e.key === 'f') {
+          e.preventDefault();
+          const btn = document.getElementById('toggleFull');
+          if (btn) btn.click();
+        }
+      });
+    }
+
+    // Simple copy-to-clipboard for citation text (sample implementation)
+    window.copyRef = function (num) {
+      const sampleCitations = {
+        1: 'Author S. (2022). Smart Cities, Governance and Public Participation. Journal of Urban Tech.',
+        2: 'Researcher A. (2021). Sustainable Urban Mobility in Medium Cities. Transport & Society.',
+        3: 'Enviro R. (2020). Waste Management & Digital Tools: A Review. Waste Management Journal.',
+        4: 'Community L. (2019). Digital Literacy & Community Resilience. Inclusive Cities.'
+      };
+      const text = sampleCitations[num] || '';
+      if (!navigator.clipboard) {
+        alert('Clipboard API not supported in this browser.');
+        return;
+      }
+      navigator.clipboard.writeText(text).then(() => {
+        alert('Citation copied to clipboard:\\n' + text);
+      }).catch(() => {
+        alert('Failed to copy citation.');
+      });
+    };
+
+  })();
+</script>
+
+</body>
+</html>

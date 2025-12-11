@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Economy — SmartCity Indramayu</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9fafb;
+      color: #111827;
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    header strong {
+      color: #2563eb;
+      font-size: 1.4rem;
+    }
+
+    nav a {
+      margin: 0 1rem;
+      text-decoration: none;
+      color: #111827;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      color: #2563eb;
+    }
+
+    nav a.active {
+      color: #2563eb;
+      font-weight: 600;
+      border-bottom: 2px solid #2563eb;
+      padding-bottom: 3px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    h1 {
+      color: #2563eb;
+      margin-bottom: 1rem;
+    }
+
+    .section {
+      margin-bottom: 2.5rem;
+      background: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    canvas {
+      width: 100% !important;
+      max-height: 320px;
+      margin-top: 1rem;
+    }
+
+    footer {
+      background-color: #f3f4f6;
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.9rem;
+      color: #6b7280;
+      margin-top: 2rem;
+    }
+
+    /* 🎧 Voice Note Styling */
+    .voice-note {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #e0f2fe;
+      border: 1px solid #93c5fd;
+      border-radius: 12px;
+      padding: 0.8rem 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .voice-note button {
+      background-color: #2563eb;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      font-size: 18px;
+      transition: background 0.2s ease;
+    }
+
+    .voice-note button:hover {
+      background-color: #1d4ed8;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <strong>SmartCity Indramayu</strong>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="smartgovernance.html">Governance</a>
+      <a href="smartmobility.html">Mobility</a>
+      <a href="smartenvironment.html">Environment</a>
+      <a href="smartpeople.html">People</a>
+      <a href="smartliving.html">Living</a>
+      <a href="smarteconomy.html" class="active">Economy</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h1>Smart Economy in Indramayu</h1>
+
+    <!-- 🎧 Voice Note -->
+    <div class="voice-note">
+      <button id="playBtn">▶</button>
+      <div>
+        <strong>Voice Note:</strong> A brief explanation about Smart Economy in Indramayu Regency, including the digital transformation of MSMEs, smart agriculture, digital tourism, and local startup innovations by Fany Revalina Putri.
+        <audio id="voiceAudio" src="voice/Smart Economy.m4a"></audio>
+      </div>
+    </div>
+
+    <p>
+      Smart Economy in Indramayu focuses on strengthening the digital ecosystem based on MSMEs, smart agriculture, technological innovation, and sustainable tourism. 
+      Collaboration between the government, businesses, and communities is key to the success of this modern economic development.
+    </p>
+
+    <div class="section">
+      <h2>📈 Digital Economy Growth</h2>
+      <p>
+        Digital transformation has positively impacted the productivity and competitiveness of local businesses. 
+        Below is the digital economy growth trend in Indramayu over the past five years:
+      </p>
+      <canvas id="economyChart"></canvas>
+    </div>
+
+    <div class="section">
+      <h2>💼 Digital Transformation of MSMEs</h2>
+      <p>
+        More than <strong>65% of MSMEs in Indramayu</strong> have transitioned to digital platforms thanks to the <strong>"MSMEs Go Digital"</strong> program.
+        Through e-commerce training, digital financial management, and online branding, local businesses have expanded their market beyond the region.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>🌾 Smart Agriculture & Fisheries</h2>
+      <p>
+        Indramayu applies <strong>Smart Farming</strong> and <strong>Smart Fisheries</strong> based on the Internet of Things (IoT) to enhance crop yields and reduce production failure risks.
+        With soil moisture sensors, weather data, and harvest prediction apps, productivity has increased by <strong>25%</strong>.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>🏖️ Digital Tourism Economy</h2>
+      <p>
+        Digital innovation is applied in the management of tourist destinations such as <strong>Tirtamaya Beach</strong> and 
+        <strong>Karangsong Mangrove Agrotourism</strong>. 
+        E-ticketing systems, tourist analytics, and cashless payments enhance tourist comfort and management efficiency.
+      </p>
+      <canvas id="tourismChart"></canvas>
+    </div>
+
+    <div class="section">
+      <h2>🚀 Startup Ecosystem & Innovation</h2>
+      <p>
+        The establishment of the <strong>Startup Innovation Hub</strong> in downtown Indramayu marks an important milestone in regional innovation development. 
+        Collaboration between the government, universities, and startup players in logistics, agritech, and culinary sectors fosters the creation of new jobs and strengthens the creative economy.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>📊 Smart Economy Impact</h2>
+      <p>
+        The implementation of Smart Economy in Indramayu has significantly boosted the regional economic growth. 
+        Per capita income has increased by <strong>12%</strong> in the last three years, 
+        and over <strong>500 MSMEs</strong> have joined the local digital ecosystem.
+      </p>
+      <canvas id="sectorChart"></canvas>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 SmartCity Indramayu — Department of Communication and Information Technology, Indramayu Regency</p>
+  </footer>
+
+  <script>
+    // 📈 Digital Economy Growth Chart
+    const ctx = document.getElementById('economyChart');
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['2020', '2021', '2022', '2023', '2024', '2025'],
+        datasets: [{
+          label: 'Digital Economy Growth (%)',
+          data: [3.2, 4.5, 5.8, 6.3, 7.1, 8.6],
+          borderColor: '#2563eb',
+          backgroundColor: 'rgba(37,99,235,0.15)',
+          fill: true,
+          tension: 0.4,
+          pointRadius: 4,
+          pointBackgroundColor: '#2563eb'
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true,
+            title: { display: true, text: 'Growth (%)' },
+            max: 10
+          }
+        }
+      }
+    });
+
+    // 🏖️ Tourism Chart
+    const ctx2 = document.getElementById('tourismChart');
+    new Chart(ctx2, {
+      type: 'bar',
+      data: {
+        labels: ['2021', '2022', '2023', '2024', '2025'],
+        datasets: [{
+          label: 'Number of Tourists (Thousands)',
+          data: [310, 375, 420, 520, 605],
+          backgroundColor: '#1e3a8a'
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true,
+            title: { display: true, text: 'Tourists (Thousands)' }
+          }
+        }
+      }
+    });
+
+    // 📊 Pie Chart Sector Contribution
+    const ctx3 = document.getElementById('sectorChart');
+    new Chart(ctx3, {
+      type: 'pie',
+      data: {
+        labels: ['MSMEs', 'Agriculture', 'Tourism', 'Startup', 'Others'],
+        datasets: [{
+          data: [35, 30, 15, 10, 10],
+          backgroundColor: ['#2563eb', '#1d4ed8', '#3b82f6', '#60a5fa', '#93c5fd']
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: { legend: { position: 'bottom' } }
+      }
+    });
+
+    // 🎧 Voice Note Function
+    const audio = document.getElementById("voiceAudio");
+    const playBtn = document.getElementById("playBtn");
+    playBtn.addEventListener("click", () => {
+      if (audio.paused) {
+        audio.play();
+        playBtn.textContent = "⏸";
+      } else {
+        audio.pause();
+        playBtn.textContent = "▶";
+      }
+    });
+    audio.addEventListener("ended", () => {
+      playBtn.textContent = "▶";
+    });
+  </script>
+
+</body>
+</html>

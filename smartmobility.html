@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Mobility — SmartCity Indramayu</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9fafb;
+      color: #111827;
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    header strong {
+      color: #2563eb;
+      font-size: 1.4rem;
+    }
+
+    nav a {
+      margin: 0 1rem;
+      text-decoration: none;
+      color: #111827;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      color: #2563eb;
+    }
+
+    nav a.active {
+      color: #2563eb;
+      font-weight: 600;
+      border-bottom: 2px solid #2563eb;
+      padding-bottom: 3px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    h1 {
+      color: #2563eb;
+      margin-bottom: 1rem;
+    }
+
+    .section {
+      margin-bottom: 2.5rem;
+      background: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    canvas {
+      width: 100% !important;
+      max-height: 300px;
+      margin-top: 1rem;
+    }
+
+    footer {
+      background-color: #f3f4f6;
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.9rem;
+      color: #6b7280;
+      margin-top: 2rem;
+    }
+
+    /* 🎧 Voice Note Player Style */
+    .voice-note {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #e0f2fe;
+      border: 1px solid #93c5fd;
+      border-radius: 12px;
+      padding: 0.8rem 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .voice-note button {
+      background-color: #2563eb;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      font-size: 18px;
+      transition: background 0.2s ease;
+    }
+
+    .voice-note button:hover {
+      background-color: #1d4ed8;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <strong>SmartCity Indramayu</strong>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="smartgovernance.html">Governance</a>
+    <a href="smartmobility.html" class="active">Mobility</a>
+    <a href="smartenvironment.html">Environment</a>
+    <a href="smartpeople.html">People</a>
+    <a href="smartliving.html">Living</a>
+    <a href="smarteconomy.html">Economy</a>
+  </nav>
+</header>
+
+<div class="container">
+  <h1>Smart Mobility in Indramayu</h1>
+
+  <!-- 🎧 Voice Note -->
+  <div class="voice-note">
+    <button id="playBtn">▶</button>
+    <div>
+      <strong>Voice Note:</strong> A brief explanation of the smart mobility initiatives and data in Indramayu Regency by Alfath Adia Yahya Kuswandi.
+      <audio id="voiceAudio" src="voice/mobilty.mp3"></audio>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Recent Initiatives</h2>
+    <p>
+      Indramayu Regency is gradually implementing mobility enhancement strategies to strengthen connectivity, reduce congestion, and support sustainable transportation. Key initiatives include:
+    </p>
+    <ul>
+      <li><strong>Smart City Masterplan & SPBE Integration</strong>: Mobility is a key dimension for improving public transportation, traffic monitoring, and multimodal connectivity.</li>
+      <li><strong>One-Way Traffic Management on Market Days</strong>: Reducing congestion on the Pantura route near trade centers and public markets.</li>
+      <li><strong>Smarter World Living Lab in Coastal Areas</strong>: Testing solar charging and electric transportation potential in coastal regions.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Mobility Data & Trends</h2>
+    <p>
+      Mobility data in Indramayu is still limited, but some patterns have already been observed. For example, traffic congestion on the Pantura route frequently increases on market days in cities like Cilet, Eretan, Parean, and Patrol.
+    </p>
+    <canvas id="congestionTrendChart"></canvas>
+    <p style="font-size:0.9rem; color:#555;">
+      * Estimated frequency of traffic congestion days per month around major markets (January–June).
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>Challenges & Opportunities</h2>
+    <p>
+      Although there is willingness and initial steps, there are still several challenges in achieving smart mobility in Indramayu:
+    </p>
+    <ul>
+      <li>Limited public transportation in rural and coastal areas.</li>
+      <li>Infrastructure challenges: road quality, signage, lighting, and drainage.</li>
+      <li>Lack of real-time data systems (traffic sensors, GPS tracking).</li>
+      <li>Coordination between districts for inter-regional transportation.</li>
+    </ul>
+    <p>
+      Opportunities include developing local smart mobility apps, expanding transportation routes, building electric vehicle (EV) charging infrastructure, and supporting bicycle lanes and pedestrian paths.
+    </p>
+  </div>
+</div>
+
+<footer>
+  <p>© 2025 SmartCity Indramayu — Department of Communication and Informatics, Indramayu Regency</p>
+</footer>
+
+<script>
+  // 🎧 Voice Note Control
+  const audio = document.getElementById("voiceAudio");
+  const playBtn = document.getElementById("playBtn");
+
+  playBtn.addEventListener("click", () => {
+    if (audio.paused) {
+      audio.play();
+      playBtn.textContent = "⏸";
+    } else {
+      audio.pause();
+      playBtn.textContent = "▶";
+    }
+  });
+
+  audio.addEventListener("ended", () => {
+    playBtn.textContent = "▶";
+  });
+
+  // 📈 Chart: Congestion Frequency
+  new Chart(document.getElementById("congestionTrendChart"), {
+    type: 'line',
+    data: {
+      labels: ['Jan','Feb','Mar','Apr','May','Jun'],
+      datasets: [{
+        label: 'Traffic Congestion Days per Month',
+        data: [5, 4, 6, 8, 7, 9],
+        borderColor: '#2563eb',
+        fill: false,
+        tension: 0.3
+      }]
+    },
+    options: {
+      scales: {
+        y: { beginAtZero: true, title: { display: true, text: 'Days' } }
+      }
+    }
+  });
+</script>
+
+</body>
+</html>

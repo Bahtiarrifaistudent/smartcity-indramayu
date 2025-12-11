@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Living — SmartCity Indramayu</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9fafb;
+      color: #111827;
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    header strong {
+      color: #2563eb;
+      font-size: 1.4rem;
+    }
+
+    nav a {
+      margin: 0 1rem;
+      text-decoration: none;
+      color: #111827;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      color: #2563eb;
+    }
+
+    nav a.active {
+      color: #2563eb;
+      font-weight: 600;
+      border-bottom: 2px solid #2563eb;
+      padding-bottom: 3px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    h1 {
+      color: #2563eb;
+      margin-bottom: 1rem;
+    }
+
+    .section {
+      margin-bottom: 2.5rem;
+      background: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    canvas {
+      width: 100% !important;
+      max-height: 320px;
+      margin-top: 1rem;
+    }
+
+    footer {
+      background-color: #f3f4f6;
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.9rem;
+      color: #6b7280;
+      margin-top: 2rem;
+    }
+
+    /* 🎧 Voice Note Player Style */
+    .voice-note {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #e0f2fe;
+      border: 1px solid #93c5fd;
+      border-radius: 12px;
+      padding: 0.8rem 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .voice-note button {
+      background-color: #2563eb;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      font-size: 18px;
+      transition: background 0.2s ease;
+    }
+
+    .voice-note button:hover {
+      background-color: #1d4ed8;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <strong>SmartCity Indramayu</strong>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="smartgovernance.html">Governance</a>
+      <a href="smartmobility.html">Mobility</a>
+      <a href="smartenvironment.html">Environment</a>
+      <a href="smartpeople.html">People</a>
+      <a href="smartliving.html" class="active">Living</a>
+      <a href="smarteconomy.html">Economy</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h1>Smart Living in Indramayu</h1>
+
+    <!-- 🎧 Voice Note -->
+    <div class="voice-note">
+      <button id="playBtn">▶</button>
+      <div>
+        <strong>Voice Note:</strong> A brief explanation of the implementation of Smart Living concepts in Indramayu Regency, covering health, education, security, and the environment by Alfath Adia Yahya Kuswandi.
+        <audio id="voiceAudio" src="voice/living.mp3"></audio>
+      </div>
+    </div>
+
+    <p>
+      Smart Living in Indramayu focuses on improving the quality of life through innovation in health, education, security, and a sustainable environment.
+      The use of digital technology and cross-sector collaboration are key to creating a comfortable, safe, and inclusive city life.
+    </p>
+
+    <div class="section">
+      <h2>📊 Quality of Life Index</h2>
+      <p>
+        Below is the Quality of Life Index for Indramayu in 2025, reflecting progress in various key sectors of Smart Living.
+      </p>
+      <canvas id="livingChart"></canvas>
+    </div>
+
+    <div class="section">
+      <h2>🏥 Smart Health</h2>
+      <p>
+        The Health Office of Indramayu has implemented the <strong>Smart Health Record</strong> system that integrates patient data across healthcare facilities.
+        The community can now access <em>telemedicine</em> services for online consultations with doctors, and use the <strong>e-Health Indramayu</strong> app for registration and digital test results.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>🎓 Digital Education</h2>
+      <p>
+        Through the <strong>Smart School Indramayu</strong> program, schools in various districts have adopted technology-based learning systems.
+        The <strong>EduIndramayu</strong> app supports communication between teachers and parents, and facilitates real-time student grade and attendance reporting.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>🚨 Security and Comfort</h2>
+      <p>
+        The Indramayu Regency Government has launched the <strong>Indramayu Safe</strong> initiative with the installation of more than 400 active CCTV cameras at strategic points.
+        All cameras are connected to the <strong>SmartCity Command Center</strong> to monitor the area in real-time and speed up the handling of public reports.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>♻️ Environment & Healthy Housing</h2>
+      <p>
+        Through the <strong>Indramayu Green Movement</strong> program, the community is encouraged to participate in digital-based waste management and the preservation of city parks.
+        The <strong>Smart Waste Bank</strong> concept, based on an app, makes waste collection more efficient and provides economic incentives for residents.
+      </p>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 SmartCity Indramayu — Department of Communication and Information Technology, Indramayu Regency</p>
+  </footer>
+
+  <script>
+    // 🎧 Voice Note Control
+    const audio = document.getElementById("voiceAudio");
+    const playBtn = document.getElementById("playBtn");
+
+    playBtn.addEventListener("click", () => {
+      if (audio.paused) {
+        audio.play();
+        playBtn.textContent = "⏸";
+      } else {
+        audio.pause();
+        playBtn.textContent = "▶";
+      }
+    });
+
+    audio.addEventListener("ended", () => {
+      playBtn.textContent = "▶";
+    });
+
+    // 📊 Chart: Smart Living Index
+    const ctx = document.getElementById('livingChart');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Health', 'Education', 'Security', 'Environment', 'Public Transport'],
+        datasets: [{
+          label: 'Smart Living Index Score (2025)',
+          data: [82, 75, 68, 70, 65],
+          backgroundColor: '#2563eb'
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true,
+            title: { display: true, text: 'Score (%)' },
+            max: 100
+          }
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>

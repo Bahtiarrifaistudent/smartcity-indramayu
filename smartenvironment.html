@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Environment — SmartCity Indramayu</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9fafb;
+      color: #111827;
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    header strong {
+      color: #2563eb;
+      font-size: 1.4rem;
+    }
+
+    nav a {
+      margin: 0 1rem;
+      text-decoration: none;
+      color: #111827;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      color: #2563eb;
+    }
+
+    nav a.active {
+      color: #2563eb;
+      font-weight: 600;
+      border-bottom: 2px solid #2563eb;
+      padding-bottom: 3px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    h1 {
+      color: #2563eb;
+      margin-bottom: 1rem;
+    }
+
+    .section {
+      margin-bottom: 2.5rem;
+      background: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    canvas {
+      width: 100% !important;
+      max-height: 300px;
+      margin-top: 1rem;
+    }
+
+    footer {
+      background-color: #f3f4f6;
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.9rem;
+      color: #6b7280;
+      margin-top: 2rem;
+    }
+
+    /* 🎧 Voice Note Player Style */
+    .voice-note {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #e0f2fe;
+      border: 1px solid #93c5fd;
+      border-radius: 12px;
+      padding: 0.8rem 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .voice-note button {
+      background-color: #2563eb;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      font-size: 18px;
+      transition: background 0.2s ease;
+    }
+
+    .voice-note button:hover {
+      background-color: #1d4ed8;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <strong>SmartCity Indramayu</strong>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="smartgovernance.html">Governance</a>
+      <a href="smartmobility.html">Mobility</a>
+      <a href="smartenvironment.html" class="active">Environment</a>
+      <a href="smartpeople.html">People</a>
+      <a href="smartliving.html">Living</a>
+      <a href="smarteconomy.html">Economy</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h1>Smart Environment in Indramayu</h1>
+
+    <!-- 🎧 Voice Note -->
+    <div class="voice-note">
+      <button id="playBtn">▶</button>
+      <div>
+        <strong>Voice Note:</strong> A brief explanation of the smart environment initiatives and data in Indramayu Regency by Oceano Nazilah.
+        <audio id="voiceAudio" src="voice/oce.mp3"></audio>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>🌿 Environmental Conditions</h2>
+      <p>
+        Indramayu Regency is a coastal area with lowland that is vulnerable to tidal flooding and rising sea levels.
+        While deforestation levels are low, green areas are still limited. Carbon emissions in this area come from transportation, energy, and household waste activities.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>🌬️ Air Quality</h2>
+      <p>
+        Based on air quality monitoring data, the average value of <strong>PM2.5</strong> in Indramayu is still categorized as <em>moderate</em>.
+        This indicates the need for emission reduction efforts and increased environmental awareness.
+      </p>
+      <canvas id="airQualityChart"></canvas>
+      <p style="font-size:0.9rem; color:#555;">
+        * Simulated data — monthly average PM2.5 in µg/m³.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>💧 Eretan Coastal Water Quality</h2>
+      <p>
+        Observations show that during the rainy season, the pollution index (PI) in the Eretan waters ranges from 1.65–6.01, which is categorized as <em>light to moderate pollution</em>.
+        During the dry season, the condition is more stable with a value of around 3.7.
+      </p>
+      <canvas id="waterPollutionChart"></canvas>
+      <p style="font-size:0.9rem; color:#555;">
+        * PI: < 1 = good, 1–5 = lightly polluted, 5–10 = moderately polluted.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>🚀 Smart Environment Strategies</h2>
+      <ul>
+        <li>Revitalization of mangrove areas and urban greening.</li>
+        <li>Installation of air quality sensors and publication of open data.</li>
+        <li>Community education programs on digital waste management.</li>
+        <li>Utilization of clean energy such as biogas and solar power.</li>
+        <li>Optimization of liquid waste management in the Cimanuk watershed.</li>
+      </ul>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 SmartCity Indramayu — Department of Communication and Informatics, Indramayu Regency</p>
+  </footer>
+
+  <script>
+    // 🎧 Voice Note Control
+    const audio = document.getElementById("voiceAudio");
+    const playBtn = document.getElementById("playBtn");
+
+    playBtn.addEventListener("click", () => {
+      if (audio.paused) {
+        audio.play();
+        playBtn.textContent = "⏸";
+      } else {
+        audio.pause();
+        playBtn.textContent = "▶";
+      }
+    });
+
+    audio.addEventListener("ended", () => {
+      playBtn.textContent = "▶";
+    });
+
+    // 📈 Chart: Air Quality
+    new Chart(document.getElementById("airQualityChart"), {
+      type: 'line',
+      data: {
+        labels: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+        datasets: [{
+          label: 'PM2.5 (µg/m³)',
+          data: [18, 20, 22, 25, 28, 30, 27, 24, 22, 20, 18, 16],
+          borderColor: '#2563eb',
+          backgroundColor: 'rgba(37,99,235,0.1)',
+          fill: true,
+          tension: 0.3
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: false,
+            title: { display: true, text: 'µg/m³' }
+          }
+        }
+      }
+    });
+
+    // 📊 Chart: Water Pollution Index
+    new Chart(document.getElementById("waterPollutionChart"), {
+      type: 'bar',
+      data: {
+        labels: ['Dry Season', 'Rainy Season (Min)', 'Rainy Season (Max)'],
+        datasets: [{
+          label: 'Pollution Index (PI)',
+          data: [3.75, 1.65, 6.01],
+          backgroundColor: ['#22c55e', '#fbbf24', '#ef4444']
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true,
+            title: { display: true, text: 'PI Value' }
+          }
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>

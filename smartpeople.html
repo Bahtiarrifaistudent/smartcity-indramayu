@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart People — SmartCity Indramayu</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9fafb;
+      color: #111827;
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    header strong {
+      color: #2563eb;
+      font-size: 1.4rem;
+    }
+
+    nav a {
+      margin: 0 1rem;
+      text-decoration: none;
+      color: #111827;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      color: #2563eb;
+    }
+
+    nav a.active {
+      color: #2563eb;
+      font-weight: 600;
+      border-bottom: 2px solid #2563eb;
+      padding-bottom: 3px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    h1 {
+      color: #2563eb;
+      margin-bottom: 1rem;
+    }
+
+    .section {
+      margin-bottom: 2.5rem;
+      background: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    canvas {
+      width: 100% !important;
+      max-height: 300px;
+      margin-top: 1rem;
+    }
+
+    footer {
+      background-color: #f3f4f6;
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.9rem;
+      color: #6b7280;
+    }
+
+    /* 🎧 Voice Note Player Style */
+    .voice-note {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #e0f2fe;
+      border: 1px solid #93c5fd;
+      border-radius: 12px;
+      padding: 0.8rem 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .voice-note button {
+      background-color: #2563eb;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      font-size: 18px;
+      transition: background 0.2s ease;
+    }
+
+    .voice-note button:hover {
+      background-color: #1d4ed8;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <strong>SmartCity Indramayu</strong>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="smartgovernance.html">Governance</a>
+      <a href="smartmobility.html">Mobility</a>
+      <a href="smartenvironment.html">Environment</a>
+      <a href="smartpeople.html" class="active">People</a>
+      <a href="smartliving.html">Living</a>
+      <a href="smarteconomy.html">Economy</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h1>Smart People in Indramayu</h1>
+
+    <!-- 🎧 Voice Note -->
+    <div class="voice-note">
+      <button id="playBtn">▶</button>
+      <div>
+        <strong>Voice Note:</strong> A brief explanation of smart people initiatives and community development in Indramayu Regency by Darmawan Almadani.
+        <audio id="voiceAudio" src="voice/tol.mp3"></audio>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Human Capital & Education</h2>
+      <p>
+        One of the main focuses of Smart People in Indramayu is enhancing human resources through education and digital training.
+        The local government works together with educational institutions and local communities to improve digital literacy and encourage the community to adapt to technology.
+      </p>
+      <ul>
+        <li><strong>Indramayu Smart Digital</strong> program, which trains students and SMEs to use digital apps and social media productively.</li>
+        <li>Development of <strong>Smart Classrooms</strong> in several schools with internet-based devices and online learning.</li>
+        <li>Collaboration with universities to support research and community-based technological innovation.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Digital Literacy & Innovation</h2>
+      <p>
+        The level of digital literacy in the community has continued to improve thanks to various training programs and awareness campaigns.
+        According to local surveys, the number of people capable of operating digital apps has significantly increased in the past two years.
+      </p>
+      <canvas id="literacyChart"></canvas>
+      <p style="font-size:0.9rem; color:#555;">
+        * Percentage of the community with basic to advanced digital literacy (estimated data from 2020–2024).
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>Community Engagement & Social Inclusion</h2>
+      <p>
+        The Smart People program also emphasizes the importance of public participation, information transparency, and collaboration among citizens.
+        Through online platforms like community forums and official social media, citizens can contribute ideas and report issues in their environments.
+      </p>
+      <ul>
+        <li>Online discussion forums for community aspirations and innovation.</li>
+        <li>Workforce skills training programs for women and rural youth.</li>
+        <li><strong>Smart Citizen</strong> initiative to strengthen digital ethics and social responsibility in cyberspace.</li>
+      </ul>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 SmartCity Indramayu — Smart People</p>
+  </footer>
+
+  <script>
+    // 🎧 Voice Note Control
+    const audio = document.getElementById("voiceAudio");
+    const playBtn = document.getElementById("playBtn");
+
+    playBtn.addEventListener("click", () => {
+      if (audio.paused) {
+        audio.play();
+        playBtn.textContent = "⏸";
+      } else {
+        audio.pause();
+        playBtn.textContent = "▶";
+      }
+    });
+
+    audio.addEventListener("ended", () => {
+      playBtn.textContent = "▶";
+    });
+
+    // 📊 Chart: Digital Literacy Growth
+    new Chart(document.getElementById("literacyChart"), {
+      type: 'bar',
+      data: {
+        labels: ['2020', '2021', '2022', '2023', '2024'],
+        datasets: [{
+          label: 'Digital Literacy Level (%)',
+          data: [45, 55, 63, 70, 78],
+          backgroundColor: '#2563eb'
+        }]
+      },
+      options: {
+        scales: {
+          y: { 
+            beginAtZero: true, 
+            title: { display: true, text: 'Percentage (%)' } 
+          }
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>
